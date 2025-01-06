@@ -1,6 +1,6 @@
 # Cross-Post App
 
-An app that connects your Mastodon account to your Twitter account and enables cross-posting. Any tweet or post on Twitter (X) is automatically posted to your Mastodon account.
+An app that connects your Mastodon account to your Twitter account and enables cross-posting. Any tweet or post on Twitter (X) is automatically posted to your Mastodon account. Users can also switch between different themes for a personalized experience.
 
 ## User Journeys
 
@@ -10,6 +10,7 @@ An app that connects your Mastodon account to your Twitter account and enables c
 4. [Enable Cross-Posting](docs/journeys/enable-cross-posting.md) - Turn on cross-posting from Twitter to Mastodon.
 5. [Disconnect Accounts](docs/journeys/disconnect-accounts.md) - Disconnect your Twitter or Mastodon accounts.
 6. [Cross-Post Tweets to Mastodon](docs/journeys/cross-post-tweets.md) - Automatically post your new tweets to Mastodon.
+7. [Theme Switcher](docs/journeys/theme-switcher.md) - Change the app's visual theme according to your preference.
 
 ## External API Services
 

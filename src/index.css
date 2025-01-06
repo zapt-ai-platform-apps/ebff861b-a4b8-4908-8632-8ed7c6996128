@@ -2,14 +2,34 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --bg-color: #f7fafc;
+  --text-color: #2d3748;
+  --button-bg-color: #4299e1;
+  --button-text-color: #ffffff;
+}
+
+.theme-light {
+  --bg-color: #f7fafc;
+  --text-color: #2d3748;
+  --button-bg-color: #4299e1;
+  --button-text-color: #ffffff;
+}
+
+.theme-dark {
+  --bg-color: #1a202c;
+  --text-color: #a0aec0;
+  --button-bg-color: #2b6cb0;
+  --button-text-color: #ffffff;
+}
+
 body {
   @apply min-h-screen h-full box-border;
-  background-color: #f7fafc;
-  color: #2d3748;
+  @apply bg-bg-color text-text-color;
 }
 
 input {
-  @apply box-border;
+  @apply box-border bg-bg-color text-text-color;
 }
 
 button {

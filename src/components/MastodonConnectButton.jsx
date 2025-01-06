@@ -29,10 +29,10 @@ export default function MastodonConnectButton() {
             placeholder="Mastodon Instance URL"
             value={instanceUrl}
             onChange={(e) => setInstanceUrl(e.target.value)}
-            className="px-2 py-1 border rounded box-border"
+            className="px-2 py-1 border rounded box-border bg-bg-color text-text-color"
           />
           <button
-            className="ml-2 px-4 py-2 bg-green-500 text-white rounded cursor-pointer"
+            className="ml-2 px-4 py-2 bg-button-bg-color text-button-text-color rounded cursor-pointer"
             onClick={handleConnect}
           >
             Connect Mastodon Account

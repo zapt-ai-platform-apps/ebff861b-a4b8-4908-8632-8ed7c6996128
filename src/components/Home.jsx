@@ -5,6 +5,7 @@ import { ThemeSupa } from '@supabase/auth-ui-shared';
 import TwitterConnectButton from './TwitterConnectButton';
 import MastodonConnectButton from './MastodonConnectButton';
 import CrossPostToggle from './CrossPostToggle';
+import ThemeSwitcher from './ThemeSwitcher';
 
 export default function Home() {
   const [session, setSession] = useState(null);
@@ -27,7 +28,7 @@ export default function Home() {
 
   if (!session) {
     return (
-      <div className="flex flex-col items-center justify-center min-h-screen bg-white p-4">
+      <div className="flex flex-col items-center justify-center min-h-screen p-4">
         <h1 className="text-2xl font-semibold mb-4">Sign in with ZAPT</h1>
         <Auth
           supabaseClient={supabase}
@@ -52,6 +53,7 @@ export default function Home() {
       <TwitterConnectButton />
       <MastodonConnectButton />
       <CrossPostToggle />
+      <ThemeSwitcher />
       <button
         className="mt-4 px-4 py-2 bg-red-500 text-white rounded cursor-pointer"
         onClick={() => supabase.auth.signOut()}

@@ -1,12 +1,7 @@
-import { authenticateUser } from '../_apiUtils';
-import * as Sentry from '@sentry/node';
-import { drizzle } from 'drizzle-orm/postgres-js';
-import postgres from 'postgres';
-import { cross_post_settings } from '../drizzle/schema.js';
+import { authenticateUser, db } from '../_apiUtils.js';
+import { users } from '../../drizzle/schema.js';
 import { eq } from 'drizzle-orm';
-
-const sql = postgres(process.env.COCKROACH_DB_URL);
-const db = drizzle(sql);
+import * as Sentry from '@sentry/node';
 
 Sentry.init({
   dsn: process.env.VITE_PUBLIC_SENTRY_DSN,
@@ -23,9 +18,13 @@ export default async function handler(req, res) {
   try {
     const user = await authenticateUser(req);
 
-    const setting = await db.select().from(cross_post_settings).where(eq(cross_post_settings.userId, user.id)).single();
+    // Retrieve the cross-posting status from user database
+    const [userData] = await db
+      .select()
+      .from(users)
+      .where(eq(users.userId, user.id));
 
-    const enabled = setting ? setting.enabled : false;
+    const enabled = userData?.crosspostEnabled ?? false;
 
     res.status(200).json({ enabled });
   } catch (error) {

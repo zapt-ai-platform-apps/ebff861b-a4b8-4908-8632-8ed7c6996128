@@ -11,7 +11,13 @@
   ],
   "functions": {
     "api/*.js": {
-      "includeFiles": "../drizzle/schema.js"
+      "includeFiles": "drizzle/schema.js"
     }
-  }
+  },
+  "crons": [
+    {
+      "path": "/api/cron/crosspost",
+      "schedule": "*/5 * * * *"
+    }
+  ]
 }

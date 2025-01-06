@@ -1,6 +1,8 @@
-import { authenticateUser } from '../_apiUtils';
+import { authenticateUser, db } from '../_apiUtils.js';
+import { users } from '../../drizzle/schema.js';
 import * as Sentry from '@sentry/node';
 import axios from 'axios';
+import { eq } from 'drizzle-orm';
 
 Sentry.init({
   dsn: process.env.VITE_PUBLIC_SENTRY_DSN,
@@ -16,12 +18,11 @@ Sentry.init({
 export default async function handler(req, res) {
   try {
     const user = await authenticateUser(req);
-    const { code } = req.query;
+    const { code, instance_url } = req.query;
 
-    // Retrieve client_id and client_secret from user database
-    const client_id = 'USER_CLIENT_ID';
-    const client_secret = 'USER_CLIENT_SECRET';
-    const instance_url = 'USER_INSTANCE_URL';
+    // Retrieve client_id and client_secret from your storage
+    const client_id = ''; // Implement retrieval
+    const client_secret = ''; // Implement retrieval
 
     const tokenResponse = await axios.post(
       `${instance_url}/oauth/token`,
@@ -36,9 +37,23 @@ export default async function handler(req, res) {
 
     const { access_token } = tokenResponse.data;
 
-    // Save access_token to user database
+    // Save access_token and instance_url to user database
+    await db
+      .insert(users)
+      .values({
+        userId: user.id,
+        mastodonAccessToken: access_token,
+        mastodonInstanceUrl: instance_url,
+      })
+      .onConflictDoUpdate({
+        target: users.userId,
+        set: {
+          mastodonAccessToken: access_token,
+          mastodonInstanceUrl: instance_url,
+        },
+      });
 
-    res.status(200).json({ success: true });
+    res.redirect('/');
   } catch (error) {
     Sentry.captureException(error);
     res.status(500).json({ error: 'Internal Server Error' });

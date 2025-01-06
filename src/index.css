@@ -1,3 +1,17 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+body {
+  @apply min-h-screen h-full box-border;
+  background-color: #f7fafc;
+  color: #2d3748;
+}
+
+input {
+  @apply box-border;
+}
+
+button {
+  @apply cursor-pointer;
+}

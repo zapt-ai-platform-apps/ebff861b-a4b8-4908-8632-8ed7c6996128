@@ -1,24 +1,29 @@
 {
-    "name": "reactjs-vite-tailwind-vercel",
-    "version": "1.0.0",
-    "description": "ReactJS app with Vite, Tailwind",
-    "type": "module",
-    "scripts": {
-        "dev": "vite",
-        "build": "vite build",
-        "serve": "vite preview",
-        "start": "vite --host"
-    },
-    "dependencies": {
-        "@sentry/browser": "^8.41.0",
-        "react": "^18.2.0",
-        "react-dom": "^18.2.0"
-    },
-    "devDependencies": {
-        "@vitejs/plugin-react": "^4.3.4",
-        "autoprefixer": "^10.4.20",
-        "postcss": "^8.4.47",
-        "tailwindcss": "^3.4.13",
-        "vite": "^5.4.7"
-    }
+  "name": "reactjs-vite-tailwind-vercel",
+  "version": "1.0.0",
+  "description": "ReactJS app with Vite, Tailwind, Cross-posting between Twitter and Mastodon",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "serve": "vite preview",
+    "start": "vite --host"
+  },
+  "dependencies": {
+    "@sentry/browser": "^8.41.0",
+    "@supabase/auth-ui-react": "^0.4.7",
+    "@supabase/auth-ui-shared": "^0.1.8",
+    "@zapt/zapt-js": "^1.0.6",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.14.2",
+    "tailwindcss": "^3.4.13",
+    "twitter-api-v2": "^1.15.0"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^4.3.4",
+    "autoprefixer": "^10.4.20",
+    "postcss": "^8.4.47",
+    "vite": "^5.4.7"
+  }
 }
